@@ -1,24 +1,31 @@
-function addItem(){
-    let list=document.getElementById('todolist'); //ul요소 가져옴
-    let todo=document.getElementById('item');//입력값을 읽어옴
-    let listitem =document.createElement('li'); //새로운 li 요소를 생성
-    let xbnt =document.createElement('button');//li요소에 들어갈 닫기버튼 생성
-
-    listitem.className='list-group-item list-group-item-action list-group-item-warning'; ///
-
-    xbnt.className='close';
-    xbnt.innerHTML='&times;';
+function addItem() {
+    //ul 요소 가져오기
+    let list=document.getElementById('todolist');
+    //새로운 li 요소 생성
+    let newli=document.createElement('li');
+    //x버튼 생성
+    let xbtn = document.createElement('button');
     
-    //close 버튼에 이벤트 처리
-    xbnt.onclick=function(e){
+    //input 요소 가져옴 
+    let todo=document.getElementById('item');
+
+    xbtn.className='clsoe';
+    xbtn.innerHTML='&times;';
+
+    //x버튼이 눌릴때 작동
+    xbtn.onclick=function(e){
         let pnode=e.target.parentNode;
         list.removeChild(pnode);
     }
-    listitem.innerText=todo.value;
-    listitem.appendChild(xbnt);
-    list.appendChild(listitem); //ul요소에li추가
+    
+    //li요소 구성
+    newli.innerText=todo.value;
+    newli.appendChild(xbtn);
 
-    //입력칸비우기 포커스 이동
+    //ul요소에 li추가
+    list.appendChild(newli);
+
+    //입력칸 비우기 & 포커스 이동
     todo.value='';
     todo.focus();
 }
